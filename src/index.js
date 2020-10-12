@@ -4,6 +4,8 @@ const dirRouter = require('./routes/dir')
 const contentRouter = require('./routes/content')
 const uploadRouter = require('./routes/upload')
 const downloadRouter = require('./routes/download')
+const enoent = require('./middlewares/enoent')
+const eexist = require('./middlewares/eexist')
 const err = require('./middlewares/err')
 
 const port = process.env.PORT || 5000
@@ -22,6 +24,8 @@ app.use('/upload', uploadRouter)
 app.use('/download', downloadRouter)
 
 // Errors
+app.use(enoent)
+app.use(eexist)
 app.use(err)
 
 // Server
