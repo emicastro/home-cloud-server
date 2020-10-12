@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const dirRouter = require('./routes/dir')
 const uploadRouter = require('./routes/upload')
 const downloadRouter = require('./routes/download')
 
@@ -13,6 +14,7 @@ app.use(cors())
 
 // Routes
 app.get('/', (req, res) => res.send('Home cloud API'))
+app.use('/dir', dirRouter)
 app.use('/upload', uploadRouter)
 app.use('/download', downloadRouter)
 
