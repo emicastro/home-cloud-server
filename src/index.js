@@ -4,6 +4,7 @@ const dirRouter = require('./routes/dir')
 const contentRouter = require('./routes/content')
 const uploadRouter = require('./routes/upload')
 const downloadRouter = require('./routes/download')
+const err = require('./middlewares/err')
 
 const port = process.env.PORT || 5000
 
@@ -19,6 +20,9 @@ app.use('/dir', dirRouter)
 app.use('/content', contentRouter)
 app.use('/upload', uploadRouter)
 app.use('/download', downloadRouter)
+
+// Errors
+app.use(err)
 
 // Server
 app.listen(port, () => console.log('Server running on port', port))
